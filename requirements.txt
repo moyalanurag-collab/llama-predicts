@@ -1,0 +1,6 @@
+# Stage 1 (ledger and risk engine) needs nothing beyond Python itself.
+# Stage 2 data pipeline:
+beautifulsoup4>=4.12
+pandas>=2.0
+# Stage 3 model:
+scikit-learn>=1.3

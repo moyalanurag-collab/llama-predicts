@@ -1,0 +1,27 @@
+# Local databases contain your betting history: never commit them
+/data/
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node (dashboard, stage 5)
+node_modules/
+dashboard/dist/
+
+# OS / editor
+.fuse_hidden*
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

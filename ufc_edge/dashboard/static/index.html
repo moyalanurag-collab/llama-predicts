@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Llama Predicts</title>
+  <link rel="icon" href="img/llama-head.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <img class="llama-bg" src="img/llama.png" alt="" aria-hidden="true">
+  <div class="shell">
+    <aside class="rail" aria-label="Main navigation">
+      <div class="brand"><img src="img/llama-head.png" alt=""><div class="brand-name">Llama<br><span>Predicts</span></div><small>UFC fight model &amp; bankroll control</small></div>
+      <div class="segmented" role="group" aria-label="Ledger">
+        <button type="button" data-mode="paper" aria-pressed="true"><span class="dot"></span>Paper</button>
+        <button type="button" data-mode="live" aria-pressed="false"><span class="dot live"></span>Live</button>
+      </div>
+      <nav class="pages" id="nav"></nav>
+      <div class="rail-foot">
+        <dl class="fresh" id="freshness"></dl>
+        <button type="button" class="btn danger kill-btn" id="killBtn">Stop all betting</button>
+        <button type="button" class="btn ghost toggle-theme" id="themeBtn">Switch to dark mode</button>
+      </div>
+    </aside>
+    <main class="main" id="main" tabindex="-1"><p class="loading">Loading…</p></main>
+  </div>
+  <dialog id="dialog"></dialog>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
