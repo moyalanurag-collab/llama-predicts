@@ -1,6 +1,6 @@
 """Independent risk engine.
 
-The AI/model *proposes* a bet; this module decides whether it is allowed.
+The model *proposes* a bet; this module decides whether it is allowed.
 ``evaluate`` is a pure function. It takes the proposal, a snapshot of the
 ledger read inside the same database transaction that would record the bet,
 the active config and the current time, and returns every rule the proposal

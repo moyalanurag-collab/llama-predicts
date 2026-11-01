@@ -31,7 +31,7 @@ class Clock:
 
 
 def auth_for_bankroll(pence: int) -> ManualAuthorisation:
-    return ManualAuthorisation("Anurag", "test bankroll", bankroll_phrase(pence))
+    return ManualAuthorisation("Operator", "test bankroll", bankroll_phrase(pence))
 
 
 # Permissive-but-realistic limits so individual tests can isolate one rule.
@@ -64,7 +64,7 @@ class LedgerTestCase(unittest.TestCase):
         self.svc.initialise_bankroll(self.bankroll_pence, auth_for_bankroll(self.bankroll_pence))
         if self.config is not None:
             self.svc.update_risk_config(
-                self.config, ManualAuthorisation("Anurag", "test config", "AUTHORISE RISK CHANGE")
+                self.config, ManualAuthorisation("Operator", "test config", "AUTHORISE RISK CHANGE")
             )
         self.svc.upsert_event("ufc-test", "UFC Test Night", EVENT_START)
         self.event_id = "ufc-test"

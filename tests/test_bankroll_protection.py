@@ -145,7 +145,7 @@ class TestExhaustion(LedgerTestCase):
     def test_manual_restart_required(self) -> None:
         self.exhaust()
         residual = self.svc.balances().active_pence
-        bad = ManualAuthorisation("Anurag", "try again", "yes")
+        bad = ManualAuthorisation("Operator", "try again", "yes")
         with self.assertRaises(AuthorisationError):
             self.svc.authorise_new_bankroll(4000 - residual, bad)
         self.assertEqual(self.svc.status()["status"], "EXHAUSTED")
@@ -278,8 +278,8 @@ class TestStopControls(LedgerTestCase):
             self.svc.place_bet(self.proposal(100))
         self.assertTrue(any(r.startswith("KILL_SWITCH") for r in ctx.exception.reasons))
         with self.assertRaises(AuthorisationError):
-            self.svc.release_kill_switch(ManualAuthorisation("Anurag", "done", "ok"))
-        self.svc.release_kill_switch(ManualAuthorisation("Anurag", "done", "RELEASE KILL SWITCH"))
+            self.svc.release_kill_switch(ManualAuthorisation("Operator", "done", "ok"))
+        self.svc.release_kill_switch(ManualAuthorisation("Operator", "done", "RELEASE KILL SWITCH"))
         self.svc.place_bet(self.proposal(100))
 
     def test_stale_odds_rejected(self) -> None:
@@ -344,12 +344,12 @@ class TestStopControls(LedgerTestCase):
 
         cfg = replace(self.svc.risk_config(), max_stake_fraction=0.08)
         with self.assertRaises(AuthorisationError):
-            self.svc.update_risk_config(cfg, ManualAuthorisation("Anurag", "why", "yes"))
+            self.svc.update_risk_config(cfg, ManualAuthorisation("Operator", "why", "yes"))
         self.assertEqual(self.svc.risk_config().max_stake_fraction, 0.05)
         with self.assertRaises(ValueError):
             self.svc.update_risk_config(
                 replace(cfg, max_stake_fraction=0.5),
-                ManualAuthorisation("Anurag", "why", "AUTHORISE RISK CHANGE"),
+                ManualAuthorisation("Operator", "why", "AUTHORISE RISK CHANGE"),
             )
 
 

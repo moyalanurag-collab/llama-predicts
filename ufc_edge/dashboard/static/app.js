@@ -612,14 +612,14 @@
     release: () => openDialog({
       title: "Release the kill switch", submit: "Release",
       body: "This lets the risk engine accept bets again.",
-      fields: [{ name: "operator", label: "Your name", value: "Anurag" }, { name: "reason", label: "Why it's safe to restart" }],
+      fields: [{ name: "operator", label: "Your name", value: "" }, { name: "reason", label: "Why it's safe to restart" }],
       phrase: "RELEASE KILL SWITCH",
       onSubmit: async (d) => { await post("/api/release", d); return "Kill switch released."; },
     }),
     init: () => openDialog({
       title: `Set up the ${mode} bankroll`, submit: "Authorise bankroll",
       body: mode === "paper" ? "Paper money only. This is the starting point for tracking hypothetical bets." : "This is the most of your own money the system may ever put at risk.",
-      fields: [{ name: "bankroll", label: "Bankroll (£)", value: "40", type: "number", step: "0.01" }, { name: "operator", label: "Your name", value: "Anurag" }, { name: "reason", label: "Reason", value: mode === "paper" ? "Start paper trading" : "Start live tracking" }],
+      fields: [{ name: "bankroll", label: "Bankroll (£)", value: "40", type: "number", step: "0.01" }, { name: "operator", label: "Your name", value: "" }, { name: "reason", label: "Reason", value: mode === "paper" ? "Start paper trading" : "Start live tracking" }],
       phrase: "AUTHORISE BANKROLL 40.00",
       onSubmit: async (d) => { await post("/api/init", d); return "Bankroll authorised."; },
     }),
